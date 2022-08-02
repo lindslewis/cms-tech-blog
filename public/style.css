@@ -1,0 +1,10 @@
+:root {
+    --background: #94958B;
+    --accent: #E00000;
+    --font: #000000;
+    --secondary: #DAC4F7;
+}
+
+header {
+    background-color: var(--background);
+}

@@ -1,9 +1,11 @@
-const { Model, DataTypes } = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class blogPost extends Model {}
+class Comment extends Model {}
 
-blogPost.init(
+
+Comment.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,25 +13,9 @@ blogPost.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        post_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        post_content: {
+        comment_content: {
             type: DataTypes.TEXT,
             allowNull: false,
-        },
-        date_created: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
-        comment_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'comment',
-                key: 'id',
-            },
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -38,16 +24,22 @@ blogPost.init(
                 key: 'id',
             },
         },
+        blogPost_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'blogPost',
+                key: 'id',
+            },
+        }
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'blogPost',
+        modelName: 'Comment',
     }
+
 );
 
-module.exports = blogPost;
-
-// need a comments model?  using the blog id as it's foreign key reference??
+module.exports = Comment;

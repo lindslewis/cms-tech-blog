@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { blogPost } = require('../../models');
 const { post } = require('./userRoutes');
-// const withAuth = require()
+const withAuth = require('../../utils/auth')
 
 //  end point is '/api/posts'
 

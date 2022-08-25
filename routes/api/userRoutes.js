@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 // routes needed:
 // get users. user creation and password (post route). forgot logout. do that too
 // endpoint is `/api/users`
+// seem completed currently but may need to double check after the post routes are done
 
 router.get('/', async (req,res)=>{
     User.findAll({

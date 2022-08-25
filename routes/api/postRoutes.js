@@ -1,0 +1,46 @@
+const router = require('express').Router();
+const { blogPost } = require('../../models');
+const { post } = require('./userRoutes');
+// const withAuth = require()
+
+//  end point is '/api/posts'
+
+// routes needed for posts
+// createPost (post)
+// deletePost (delete)
+// updatePost (put)
+
+// to create a post
+router.post('/', withAuth, async (req, res) => {
+    try {
+        const newblogPost = await blogPost.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
+
+        res.status(200).json(newblogPost);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+// to delete a post
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const blogPostInfo = await blogPost.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+
+        if(!blogPostInfo) {
+            res.status(404).json({ message: 'No post found with this id.'});
+            return;
+        }
+
+        res.status(200).json(blogPostInfo);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});

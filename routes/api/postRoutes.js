@@ -44,3 +44,37 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.put('/:id', withAuth, async (req, res) => {
+    try {
+        const blogPostInfo = await blogPost.findOne({ 
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+             },
+        });
+
+        if(!blogPostInfo) {
+            res.status(404).json({ message: 'No post found.' });
+            return;
+        }
+    
+        blogPost.update(
+            {
+                post_name: req.body.post_name,
+                post_content: req.body.post_content,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        )
+        
+        res.status(200).json(blogPostInfo); 
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router;

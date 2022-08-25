@@ -4,7 +4,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 
 // routes needed:
-// get users. user creation and password (post route). 
+// get users. user creation and password (post route). forgot logout. do that too
 // endpoint is `/api/users`
 
 router.get('/', async (req,res)=>{
@@ -60,3 +60,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
+module.exports = router;

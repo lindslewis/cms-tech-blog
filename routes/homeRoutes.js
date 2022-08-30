@@ -31,3 +31,16 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// get by id
+router.get('/posts/:id', async (req, res) => {
+    try {
+        const blogData = await blogPost.findByPk(req.params.id, {
+            include: [
+                {
+                    
+                }
+            ]
+        })
+    }
+})

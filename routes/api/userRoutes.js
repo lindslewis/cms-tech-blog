@@ -8,12 +8,19 @@ const bcrypt = require('bcrypt');
 // endpoint is `/api/users`
 // seem completed currently but may need to double check after the post routes are done
 
+// comment and blogpost to be included, trying this way though
 router.get('/', async (req,res)=>{
     User.findAll({
-        include: [Comment, blogPost]
+        include: [
+            {
+                all: true,
+                nested: true,
+            }
+        ]
     }).then(data=>{
         res.json(data)
     }).catch(err=>{
+        console.log(err)
         res.status(500).json({msg:"ERROR",err})
     })
 });

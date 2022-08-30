@@ -32,15 +32,25 @@ router.get('/', async (req, res) => {
     }
 });
 
-// get by id
+// get by id, this will include the comments
 router.get('/posts/:id', async (req, res) => {
     try {
         const blogData = await blogPost.findByPk(req.params.id, {
             include: [
                 {
-                    
-                }
-            ]
-        })
+                    model: Comment,
+                    attributes: ['date_created', 'user_id'],
+                },
+            ],
+        });
+
+        const blog = blogData.get({ plain: true });
+
+        res.render('blog', {
+            ...blog,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
     }
-})
+});

@@ -14,7 +14,12 @@ const withAuth = require('../../utils/auth');
 // get all comments ig
 router.get('/:blogPost_id/comments', (req, res) => {
     Comment.findAll({
-        include: [ blogPost, User ]
+        include: [ 
+            {
+                all: true,
+                nested: true,
+            }
+        ]
     }).then(data => {
         res.json(data)
     }).catch(err => {
@@ -28,8 +33,8 @@ router.post('/:blogPost_id/comments', withAuth, async (req, res) => {
         return res.status(403).json({ message: "must be logged in to comment"})
     }
     Comment.create({
-        user_id: req.session.User.id,
-        comment_content: req.body.comment_content,
+        ...req.body,
+        user_id: req.session.user_id,
     }).then(data => {
         res.json(data)
     }).catch(err => {

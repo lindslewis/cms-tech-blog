@@ -22,3 +22,25 @@
         <textarea class="form-control" id="postContent" rows="4"></textarea>
     </section>
 </section>
+
+{{!-- user posts --}}
+{{!-- need to make it clickable to open up a modal or maybe expand to see comments on it, and be able to edit or delete it? --}}
+{{#if posts.length}}
+<section class="postList">
+    {{#each posts as |post|}}
+    <section class="row mb-2">
+        <section class="card">
+            <section class="card-body">
+                <h4 class="card-title">{{post.post_name}}</h4>
+                {{!-- maybe truncate the text for post_content? --}}
+                <p class="card-text">{{post.post_content}}</p>
+            </section>
+            <section class="card-footer">
+                <p class="text-end mr-2">{{post.date_created}}</p>
+            </section>
+
+
+        </section>
+    </section>
+</section>
+

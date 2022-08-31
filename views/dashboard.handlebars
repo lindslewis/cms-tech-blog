@@ -1,0 +1,24 @@
+{{!-- dashboard is basically the profile page --}}
+{{!-- will see their own pre-existing blog posts and the option to add more --}}
+
+<section>
+    <h2>{{username}}'s Dashboard</h2>
+</section>
+
+{{!-- make button to create a new post, have that form be collapsible? --}}
+<section>
+    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#newPostForm" aria-expanded="false" aria-controls="newPostForm">
+        Create New Post
+    </button>
+</section>
+{{!-- collapsible form for a new post --}}
+<section class="collapse" id="newPostForm">
+    <section class="mb-3">
+        <label for="postTitle" class="form-label">Post Title</label>
+        <input type="text" class="form-control" id="postTitle">
+    </section>
+    <section class="mb-3">
+        <label for="postContent" class="form-label">Post Content</label>
+        <textarea class="form-control" id="postContent" rows="4"></textarea>
+    </section>
+</section>

@@ -15,5 +15,13 @@ const loginFormHandler = async (e) => {
             }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        if (res.ok) { 
+            document.location.replace('/dashboard');
+        } else {
+            alert('res.statusText');
+        }
     }
-}
+};
+
+document.querySelector('.loginForm').addEventListener('submit', loginFormHandler);

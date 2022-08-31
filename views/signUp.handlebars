@@ -1,12 +1,15 @@
-{{!-- let's just make a simple form layout lindsay --}}
 
 
 <section>
-    <form class="form loginForm">
+    <form class="form signUpForm">
         {{!-- email input below --}}
         <section class="mb-3">
             <label for="inputEmail" class="form-label">Email</label>
             <input type="email" class="form-control" id="inputEmail" aria-describedby="email">
+        </section>
+        <section class="mb-3">
+            <label for="inputUser" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inputUser">
         </section>
         {{!-- password input below --}}
         <section class="mb-3">
@@ -18,9 +21,9 @@
             <label for="showPass" class="form-check-label">Show Password</label>
             <input type="checkbox" class="form-check-input" id="showPass">
         </section>
-        <button type="submit" class="btn" id="loginBtn">Login</button>
+        <button type="submit" class="btn" id="signUpBtn">Sign Up</button>
 
     </form>
 </section>
 
-<script src="../public/js/login.js"></script>
+<script src="../public/js/signup.js"></script>

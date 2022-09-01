@@ -12,6 +12,7 @@ const logout = async () => {
     if (res.ok) {
         document.location.replace('/');
     } else {
+        // console.log(response)
         alert(response.statusText);
     }
 };

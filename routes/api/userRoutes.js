@@ -37,6 +37,7 @@ router.post('/login', async (req, res) => {
             res.status(200).json(userInfo);
         });
     } catch (err) {
+        console.log(err)
         res.status(400).json(err);
     }
 });
@@ -64,6 +65,7 @@ router.post('/login', async (req, res) => {
             res.json({ user: userInfo, message: "You have been logged in."})
         });
     } catch (err) {
+        console.log(err)
         res.status(400).json(err);
     }
 });
@@ -74,6 +76,7 @@ router.post('/logout', (req, res) => {
             res.status(204).end();
         });
     } else {
+        console.log()
         res.status(404).end();
     }
 });

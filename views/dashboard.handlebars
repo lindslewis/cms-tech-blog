@@ -29,14 +29,14 @@
 <section class="postList">
     {{#each posts as |post|}}
     <section class="row mb-2">
-        <section class="card">
+        <section class="card mw-75">
             <section class="card-body">
-                <h4 class="card-title">{{post.post_name}}</h4>
+                <h5 class="card-title">{{post.post_name}}</h4>
                 {{!-- maybe truncate the text for post_content? --}}
                 <p class="card-text">{{post.post_content}}</p>
             </section>
             <section class="card-footer">
-                <p class="text-end mr-2">{{post.date_created}}</p>
+                <p class="card-footer text-muted text-end border border-top-0 text-bg-white2">{{post.date_created}}</p>
             </section>
 
 

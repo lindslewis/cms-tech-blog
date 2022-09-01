@@ -2,8 +2,8 @@ const loginFormHandler = async (e) => {
     // default is to refresh page
     e.preventDefault();
 
-    const email = document.querySelector('#inputEmail').value.trim();
-    const password = document.querySelector('#inputPassword').value.trim();
+    const email = document.querySelector('#inputLoginEmail').value.trim();
+    const password = document.querySelector('#inputLoginPassword').value.trim();
 
     if ( email && password ) {
         // need to call the login request from the api

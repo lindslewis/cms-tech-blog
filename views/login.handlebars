@@ -2,7 +2,8 @@
 
 
 <section>
-    <h2 class="text-center mt-5">Login</h2>
+    <h2 class="text-center mt-5" id="loginForm">Login</h2>
+    <p class="text-center my-2">Don't have an account? Sign up <a href="#signUpForm" class="text-decoration-none text-success">here</a>.</p>
     <form class="form loginForm">
         {{!-- email input below --}}
         <section class="d-flex flex-column align-items-center">
@@ -18,13 +19,43 @@
             
             <section class="d-flex justify-content-center my-4">
                 <button type="submit" class="btn btn-outline-success px-5" id="loginBtn">Login</button>
+
             </section>
-        
-            <p class="text-center">Don't have an account? Sign up <a href="/signup" class="text-decoration-none text-success">here</a>.</p>
 
         </section>
        
     </form>
+    <section>
+        <h2 class="text-center my-5">Create Account</h2>
+         <p class="text-center my-2">Already have an account? Login <a href="#loginForm" class="text-decoration-none text-success">here</a>.</p>
+            <form class="form signUpForm">
+            {{!-- email input below --}}
+                <section class="d-flex flex-column align-items-center" id="signUpForm">
+                    <section class="mb-3 w-50">
+                        
+                        <label for="inputEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="email">
+                    </section>
+                    <section class="mb-3 w-50">
+                        <label for="inputUser" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="inputUser">
+                    </section>
+                    {{!-- password input below --}}
+                    <section class="mb-3 w-50">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    </section>
+                    {{!-- to toggle showing pass --}}
+                    <section class="d-flex justify-content-center my-4">
+                        <button type="submit" class="btn btn-outline-success px-5" id="signUpBtn">Sign Up</button>
+                    </section>
+
+                </section>
+            </form>
+
+        
+    </section>
 </section>
 
 <script src="../public/js/login.js"></script>
+<script src="../public/js/signup.js"></script>
